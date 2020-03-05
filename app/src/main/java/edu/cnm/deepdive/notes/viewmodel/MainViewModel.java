@@ -16,7 +16,6 @@ public class MainViewModel extends AndroidViewModel {
   private MutableLiveData<Throwable> throwable;
   // TODO Declare and use a CompositeDisposable
 
-
   public MainViewModel(@NonNull Application application) {
     super(application);
     repository = new NoteRepository();
@@ -46,14 +45,13 @@ public class MainViewModel extends AndroidViewModel {
         );
   }
 
-  public void add(Note note) {
+  public void save(Note note) {
     throwable.setValue(null);
-    repository.add(note)
+    repository.save(note)
         .subscribe(
             () -> {},
             throwable::postValue
         );
-
   }
 
   public void remove(Note note) {
@@ -64,6 +62,5 @@ public class MainViewModel extends AndroidViewModel {
             throwable::postValue
         );
   }
-
 
 }

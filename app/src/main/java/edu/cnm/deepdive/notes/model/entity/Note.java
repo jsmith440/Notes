@@ -15,10 +15,10 @@ public class Note {
 
   @NonNull
   @ColumnInfo(index = true)
-  private Date created = new Date()
+  private Date created = new Date();
 
   @NonNull
-  @ColumnInfo(index =  true, collate = ColumnInfo.NOCASE)
+  @ColumnInfo(index = true, collate = ColumnInfo.NOCASE)
   private String subject;
 
   @NonNull
@@ -28,18 +28,16 @@ public class Note {
     return id;
   }
 
+  public void setId(long id) {
+    this.id = id;
+  }
+
   public Date getCreated() {
     return created;
   }
 
   public void setCreated(Date created) {
     this.created = created;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-
-
   }
 
   @NonNull
@@ -59,4 +57,11 @@ public class Note {
   public void setText(@NonNull String text) {
     this.text = text;
   }
+
+  @NonNull
+  @Override
+  public String toString() {
+    return String.format("[%1$s] %2$s", created, subject);
+  }
+
 }
